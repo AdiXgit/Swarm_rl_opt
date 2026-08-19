@@ -1,0 +1,72 @@
+# Data-layer configuration. Every value here is recorded with each run so a
+# result can be reproduced (docs/BACKTEST_SPEC.md, Integrity).
+
+underlying: NIFTY
+
+# Locked MVP dataset. Do not widen without approval: the splits, the audits and
+# every reported metric are defined against exactly this range.
+dataset:
+  start: 2021-04-01
+  end: 2026-08-18
+  root: data/processed/nifty_eod
+
+# Chronological, non-overlapping, no gaps. TRAIN deliberately straddles the
+# 2024-01-02 bhavcopy schema boundary so neither provenance is a split edge.
+splits:
+  train:
+    start: 2021-04-01
+    end: 2024-12-31
+  validation:
+    start: 2025-01-01
+    end: 2025-08-31
+  test:
+    start: 2025-09-01
+    end: 2026-08-18
+
+# NSE moved the NIFTY weekly expiry Thursday -> Tuesday in Sep-2025, which lands
+# on the validation/test boundary. The primary test stays in the Tuesday regime;
+# docs/EXPERIMENTS.md Experiment 4 re-runs everything inside the Thursday regime
+# to separate the architecture effect from the regime change.
+expiry_regimes:
+  thursday:
+    start: 2021-04-01
+    end: 2025-08-31
+  tuesday:
+    start: 2025-09-01
+    end: 2026-08-18
+
+provider:
+  # "local_parquet" for all training/eval; "nsekit" only to build the dataset.
+  default: local_parquet
+  nsekit:
+    max_rps: 1.0        # below NseKit's own default of 3.0
+    retries: 2
+    retry_delay: 2.0
+  local_parquet:
+    root: data/processed/fixture_nifty
+
+schema:
+  # NSE switched bhavcopy formats here; both are supported by the normalizer.
+  udiff_from: 2024-01-02
+
+pricing:
+  # NSE publishes no bid/ask for EOD options. DATA_SPEC forbids inventing one,
+  # so entries and marks use a published price plus an explicit cost model.
+  mark_price: close          # close | settle_price
+  entry_price: close
+  # Applied against the mark, per leg, per side. Placeholder pending approval.
+  slippage_bps: 0
+  transaction_cost_bps: 0
+
+greeks:
+  # NIFTY options are priced off the future, not the index: the parity-implied
+  # forward sits materially above spot. IV and Greeks therefore use Black-76 on
+  # the expiry-matched forward. Using spot would manufacture a skew.
+  model: black76
+  forward: expiry_matched     # futures close, else put-call parity
+  risk_free_rate: 0.0         # not needed under Black-76 for undiscounted greeks
+
+liquidity:
+  # A contract must clear these to be selectable by trade construction.
+  min_open_interest: 0
+  require_traded: false

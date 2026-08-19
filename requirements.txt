@@ -1,0 +1,19 @@
+# SWARM-OPT — pinned to what Week 1 actually exercises.
+# Week 2-4 additions (xgboost, torch, gymnasium, stable-baselines3) are
+# listed but unpinned until those milestones start.
+
+# data + provider
+nsekit==0.0.43
+pandas>=2.2,<3
+numpy>=1.26,<2
+pyarrow>=18
+scipy>=1.12
+
+# tests
+pytest>=8
+
+# week 2-4 (not yet imported by any module)
+# xgboost>=2.0
+# torch>=2.5
+# gymnasium>=0.29
+# stable-baselines3>=2.3

@@ -1,0 +1,31 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+.env.*
+
+# Raw bhavcopy pulls are reproducible via scripts/
+# Keep only the two pinned schema fixtures.
+data/raw/*.parquet
+!data/raw/fo_bhavcopy_18082026.parquet
+!data/raw/fo_bhavcopy_legacy_20230717.parquet
+
+# Large/generated datasets
+data/processed/
+data/features/
+*.csv
+
+# ML artifacts
+models/
+checkpoints/
+runs/
+mlruns/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
