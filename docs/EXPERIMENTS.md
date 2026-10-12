@@ -1,5 +1,13 @@
 # Experiments
 
+> **Status:** none of Experiments 0-4 below can run yet — all require PPO,
+> which is deferred (see `docs/RL_SPEC.md`). Phase 2 delivered the specialist
+> agents these experiments will eventually condition on; their standalone
+> TRAIN/VALIDATION classification metrics are in
+> `data/models/phase2_training_report.json`, produced by
+> `scripts/train_agents.py`. Those are software/statistical diagnostics for
+> the specialists, not a trading experiment result.
+
 ## Goal
 Test whether the specialist swarm improves PPO's weekly options strategy selection.
 

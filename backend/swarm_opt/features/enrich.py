@@ -97,4 +97,12 @@ def atm_summary(chain: pd.DataFrame) -> pd.DataFrame:
             "skew_25d": put_25 - call_25,
             "priced_strikes": int(priced["strike"].nunique()),
         })
+    if not rows:
+        # Every expiry's chain had zero priced strikes (e.g. everything
+        # printed at intrinsic). An explicit absence, not an error: the
+        # caller (e.g. `features.atm_cache.build_atm_iv_row`) already
+        # branches on `summary.empty` and must see a correctly-shaped empty
+        # frame here, not a KeyError from sort_values on a column-less one.
+        columns = ["date", "expiry", "days_to_expiry", "forward", "atm_strike", "atm_iv", "skew_25d", "priced_strikes"]
+        return pd.DataFrame(columns=columns)
     return pd.DataFrame(rows).sort_values("days_to_expiry").reset_index(drop=True)

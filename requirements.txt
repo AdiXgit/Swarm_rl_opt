@@ -1,6 +1,6 @@
-# SWARM-OPT — pinned to what Week 1 actually exercises.
-# Week 2-4 additions (xgboost, torch, gymnasium, stable-baselines3) are
-# listed but unpinned until those milestones start.
+# SWARM-OPT — pinned to what's actually imported.
+# Week 3-4 additions (torch, gymnasium, stable-baselines3) are listed but
+# unpinned until PPO starts.
 
 # data + provider
 nsekit==0.0.43
@@ -9,11 +9,23 @@ numpy>=1.26,<2
 pyarrow>=18
 scipy>=1.12
 
+# Phase 2: Direction/Volatility/Regime agents (backend/swarm_opt/agents),
+# evaluation metrics (backend/swarm_opt/evaluation.py)
+xgboost>=2.0,<3
+scikit-learn>=1.4,<2
+
+# Phase 2.6: scripts/phase26_experiments.py model-comparison matrix.
+# lightgbm installs cleanly but crashes with a native access violation on
+# every fit in this Windows environment (see
+# docs/PHASE_2_6_AGENT_INTELLIGENCE_EXPERIMENT_REPORT.md section 4) -- kept
+# here as a documented, currently-nonfunctional optional dependency rather
+# than silently dropped.
+lightgbm>=4.0  # known broken on this Windows venv; XGBoost/sklearn cover the comparison instead
+
 # tests
 pytest>=8
 
-# week 2-4 (not yet imported by any module)
-# xgboost>=2.0
+# week 3-4 (not yet imported by any module)
 # torch>=2.5
 # gymnasium>=0.29
 # stable-baselines3>=2.3

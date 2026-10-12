@@ -1,5 +1,12 @@
 # PPO / RL Specification
 
+> **Status: deferred.** Phase 2 implemented the non-RL specialist
+> intelligence layer only (Direction/Volatility/Regime XGBoost agents,
+> the deterministic Greeks agent, `SWARM_STATE_V1`). PPO, the Decision
+> Engine and the Trade Constructor described below are not implemented;
+> nothing in this document has been built yet. This file states the
+> intended design for Week 3, kept for reference only.
+
 ## Objective
 PPO learns a weekly policy for selecting and sizing NIFTY options strategies.
 

@@ -1,0 +1,107 @@
+{
+  "purpose": "pin the NIFTY weekly-options transition between 2019-01-16 (confirmed monthly) and 2019-02-15 (confirmed weekly)",
+  "request_bound": 4,
+  "requests_made": 4,
+  "rows": [
+    {
+      "requested_date": "2019-01-24",
+      "chain_available": true,
+      "rows": 632,
+      "distinct_expiries": [
+        "2019-01-31",
+        "2019-02-28",
+        "2019-03-28",
+        "2019-06-27",
+        "2019-09-26",
+        "2019-12-26",
+        "2020-06-25",
+        "2020-12-31",
+        "2021-06-24",
+        "2021-12-30",
+        "2022-12-29",
+        "2023-06-29"
+      ],
+      "front_expiry": "2019-01-31",
+      "front_days_to_expiry": 7,
+      "front_two_expiry_gap_days": 28,
+      "classification": "MONTHLY_ONLY_OR_NO_WEEKLY_EVIDENCE",
+      "evidence": "front expiry 2019-01-31, gap to next listed expiry 28 days"
+    },
+    {
+      "requested_date": "2019-01-31",
+      "chain_available": true,
+      "rows": 660,
+      "distinct_expiries": [
+        "2019-01-31",
+        "2019-02-28",
+        "2019-03-28",
+        "2019-06-27",
+        "2019-09-26",
+        "2019-12-26",
+        "2020-06-25",
+        "2020-12-31",
+        "2021-06-24",
+        "2021-12-30",
+        "2022-12-29",
+        "2023-06-29"
+      ],
+      "front_expiry": "2019-01-31",
+      "front_days_to_expiry": 0,
+      "front_two_expiry_gap_days": 28,
+      "classification": "MONTHLY_ONLY_OR_NO_WEEKLY_EVIDENCE",
+      "evidence": "front expiry 2019-01-31, gap to next listed expiry 28 days"
+    },
+    {
+      "requested_date": "2019-02-07",
+      "chain_available": true,
+      "rows": 587,
+      "distinct_expiries": [
+        "2019-02-28",
+        "2019-03-28",
+        "2019-04-25",
+        "2019-06-27",
+        "2019-09-26",
+        "2019-12-26",
+        "2020-06-25",
+        "2020-12-31",
+        "2021-06-24",
+        "2021-12-30",
+        "2022-12-29",
+        "2023-06-29"
+      ],
+      "front_expiry": "2019-02-28",
+      "front_days_to_expiry": 21,
+      "front_two_expiry_gap_days": 28,
+      "classification": "MONTHLY_ONLY_OR_NO_WEEKLY_EVIDENCE",
+      "evidence": "front expiry 2019-02-28, gap to next listed expiry 28 days"
+    },
+    {
+      "requested_date": "2019-02-14",
+      "chain_available": true,
+      "rows": 701,
+      "distinct_expiries": [
+        "2019-02-14",
+        "2019-02-21",
+        "2019-02-28",
+        "2019-03-07",
+        "2019-03-20",
+        "2019-03-28",
+        "2019-04-25",
+        "2019-06-27",
+        "2019-09-26",
+        "2019-12-26",
+        "2020-06-25",
+        "2020-12-31",
+        "2021-06-24",
+        "2021-12-30",
+        "2022-12-29",
+        "2023-06-29"
+      ],
+      "front_expiry": "2019-02-14",
+      "front_days_to_expiry": 0,
+      "front_two_expiry_gap_days": 7,
+      "classification": "WEEKLY_COMPATIBLE",
+      "evidence": "front expiry 2019-02-14, gap to next listed expiry 7 days"
+    }
+  ]
+}
